@@ -1,10 +1,10 @@
-# Python CLI project setup with pip and `pyproject.toml`
+# Python CLI project packaging with `pyproject.toml`
 
-This guide walks through creating a minimal, standards-compliant Python CLI tool using `pip`, `pyproject.toml`, and VS Code. The project installs in editable mode (`pip install -e .`), allowing the CLI to run globally during development without needing to rebuild.
+This guide walks through creating a minimal, standards-compliant Python command-line (CLI) script package with `pyproject.toml`. The project installs in editable mode, allowing the script to run globally during development without needing to rebuild.
 
-It follows modern Python packaging practices (PEPs 517, 518, 621, 660) and serves as a reusable scaffold for future CLI tools.
+The project follows modern Python packaging practices (PEPs 517, 518, 621, 660) and serves as a reusable scaffold for future CLI tools.
 
-Based on the [Real Python YouTube tutorial](https://www.youtube.com/watch?v=v6tALyc4C10) and [Real Python packaging course](https://realpython.com/courses/packaging-with-pyproject-toml/).
+Based on: [Packaging Your Python Code With pyproject.toml](https://www.youtube.com/watch?v=v6tALyc4C10) course by Real Python.
 
 ## Why use this pattern
 
@@ -254,7 +254,6 @@ Learn more at GitHub’s [Contributing to a project](https://docs.github.com/en/
 ## References
 
 - [Real Python: Packaging Your Python Code With pyproject.toml](https://www.youtube.com/watch?v=v6tALyc4C10) (YouTube)
-- [Real Python: Everyday Project Packaging](https://realpython.com/courses/packaging-with-pyproject-toml/) course
 - [Python Packaging Authority (PyPA)](https://packaging.python.org)
 - [Configuring setuptools using pyproject.toml files](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)
 - [Writing your pyproject.toml](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
