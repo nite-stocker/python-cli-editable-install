@@ -67,9 +67,9 @@ build-backend = "setuptools.build_meta"
 
 It is the standard project config file used by pip, build, and modern Python tools. It replaces `setup.py`.
 
-- `[build-system]`: tells pip/setuptools how to build the package.
-- `[project]`: defines metadata, dependencies, and the CLI entry point.
-- `[project.scripts]`: maps a shell command (`snakesay`) to the `main()` function in the `src/snakesay/__main__.py` script
+- `[build-system]`: Tells pip/setuptools how to build the package.
+- `[project]`: Defines metadata, dependencies, and the CLI entry point.
+- `[project.scripts]`: Creates and maps a `snakesay` shell command to the `snakesay` package folder and the `__main__.py` module script's `main()` function.
 
 ### 3. Create source files
 
