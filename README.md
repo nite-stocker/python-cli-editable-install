@@ -1,7 +1,6 @@
 Understood. Here’s the updated README with your requested revision applied.
 
-# Python CLI project setup with pip and `pyproject.toml`  
-(editable install with VS Code)
+# Python CLI project setup with pip and `pyproject.toml`
 
 This guide walks through creating a minimal, standards-compliant Python CLI tool using `pip`, `pyproject.toml`, and VS Code. The project installs in editable mode (`pip install -e .`), allowing the CLI to run globally during development without needing to rebuild.
 
