@@ -240,8 +240,8 @@ pip uninstall myscript
 To reuse this project for other CLI tools:
 
 - Duplicate the folder
-- Rename the `myscript` module and CLI command
-- Update `pyproject.toml`, `main.py`, and documentation
+- Rename the `snakesay` module and CLI command
+- Update `pyproject.toml`, `__main__.py`, and documentation
 
 Thank you for following along!
 
