@@ -1,4 +1,7 @@
+Understood. Here’s the updated README with your requested revision applied.
+
 # Python CLI project setup with pip and `pyproject.toml`  
+(editable install with VS Code)
 
 This guide walks through creating a minimal, standards-compliant Python CLI tool using `pip`, `pyproject.toml`, and VS Code. The project installs in editable mode (`pip install -e .`), allowing the CLI to run globally during development without needing to rebuild.
 
@@ -8,7 +11,7 @@ Based on the [Real Python YouTube tutorial](https://www.youtube.com/watch?v=v6tA
 
 ## Why use this pattern
 
-- Run your CLI from anywhere (`myscript`)
+- Run your CLI from anywhere using a single command (`snakesay`)—no need to navigate to the script directory or type `python` and the file path every time
 - Follow Python packaging standards (`pyproject.toml`, editable installs)
 - Avoid rebuilds after changes
 - Integrate easily with IDEs, CI, and deployment tools
@@ -24,7 +27,7 @@ Without it:
 
 1. Open VS Code
 2. Go to **File > Open Folder...**
-3. Create a folder named `myscript` (or a custom name)
+3. Create a folder named `snakesay`
 4. Select and open it
 
 ### 2. Add project files
@@ -34,77 +37,114 @@ From the **Explorer sidebar**:
 - macOS: ⌘+Shift+E
 - Windows/Linux: Ctrl+Shift+E
 
-Create:
+…create two files:
 
 - `pyproject.toml`
-- `README.md` (optional but recommended)
+- `README.md`
 
 To create a new file:
 
-- macOS: ⌘+N, then **File > Save As**
-- Windows/Linux: Ctrl+N, then **File > Save As**
+- macOS: ⌘+N, then ⌘+S to save
+- Windows/Linux: Ctrl+N, then Ctrl+S to save
 
-Paste into `pyproject.toml`:
+Paste into `pyproject.toml` and save:
 
 ```toml
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "myscript"
-version = "0.1.0"
-description = "Short description of what this script does"
+name = "snakesay"
+version = "1.0.0"
+description = "Command-line program that prints an ASCII art picture of a snake with a speech bubble containing a given message."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-myscript = "myscript.main:main"
+snakesay = "snakesay.__main__:main"
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
 ```
 
-#### What is `pyproject.toml`
+#### What is `pyproject.toml`?
 
 It is the standard project config file used by pip, build, and modern Python tools. It replaces `setup.py`.
 
 - `[build-system]`: tells pip/setuptools how to build the package.
 - `[project]`: defines metadata, dependencies, and the CLI entry point.
-- `[project.scripts]`: maps a shell command (`myscript`) to the function to run (`main()` in `src/myscript/main.py`)
+- `[project.scripts]`: maps a shell command (`snakesay`) to the `main()` function in the `src/snakesay/__main__.py` script
 
 ### 3. Create source files
 
 From the Explorer:
 
 - Create a folder: `src/`
-- Inside `src/`, create another folder: `myscript/`
-- Inside `src/myscript/`, create:
-  - `__init__.py`
-  - `main.py`
+- Inside `src/`, create another folder: `snakesay/`
+- Inside `src/snakesay/`, create:
+  - `__main__.py` (double underscore before and after "main")
+  - `snake.py`
 
-To create each file:
-
-- macOS: ⌘+N, then **File > Save As**
-- Windows/Linux: Ctrl+N, then **File > Save As**
-
-Final structure:
+Final project structure:
 
 ```
-myscript/
+snakesay/
 ├── pyproject.toml
 ├── README.md
 └── src/
-    └── myscript/
-        ├── __init__.py
-        └── main.py
+    └── snakesay/
+        ├── __main__.py
+        └── snake.py
 ```
 
 ### 4. Add script logic
 
-In `src/myscript/main.py`, add:
+In `src/snakesay/__main__.py`, add:
 
 ```python
+import sys
+
+from snakesay import snake
+
+
 def main():
-    print("Hello from myscript!")
+    snake.say(" ".join(sys.argv[1:]))
+
+
+if __name__ == "__main__":
+    main()
+
+```
+
+In `src/snakesay/snake.py`, add:
+
+```python
+SNAKE = r"""  \
+   \    __
+    \  {oo}
+       (__)\
+         λ \\
+           _\\__
+          (_____)_
+         (________)Oo°
+"""
+
+
+def bubble(message: str) -> str:
+    """Create a speech bubble for the given message."""
+    bubble_length: int = len(message) + 2
+    return f"""
+ {"_" * bubble_length}
+( {message} )    
+ {"‾" * bubble_length}"""
+
+
+def say(message: str) -> None:
+    """Print a snake with a speech bubble containing the given message."""
+    if not message:
+        message = "I never thought I'd say this, but I have nothing to say."
+    print(bubble(message))
+    print(SNAKE)
+
 ```
 
 ### 5. Create and activate a virtual environment
@@ -136,25 +176,55 @@ You should now see `(.venv)` in your shell prompt.
 
 ### 6. Install in editable mode
 
-With the virtual environment activated:
+With the virtual environment activated, run:
 
 ```bash
 pip install -e .
 ```
 
-Then run:
+Run the script:
 
 ```bash
-myscript
+snakesay
 ```
 
 You should see:
 
-```
-Hello from myscript!
+```console
+ ________________________________________________________
+(I never thought I'd say this, but I have nothing to say.)
+ --------------------------------------------------------
+   \    __
+    \  {oo}
+       (__)\
+         λ \\
+           _\\__
+          (_____)_
+         (________)Oo°
 ```
 
-### 7. Reinstall if you edit `pyproject.toml`
+Try a custom message after the script name:
+
+```bash
+snakesay Time is an illusion. Lunchtime doubly so.
+```
+
+You should see:
+
+```console
+ _________________________________________
+(Time is an illusion. Lunchtime doubly so.)
+ -----------------------------------------
+   \    __
+    \  {oo}
+       (__)\
+         λ \\
+           _\\__
+          (_____)_
+         (________)Oo°
+```
+
+### 7. Reinstall the script if you edit `pyproject.toml`
 
 If you change dependencies, entry points, or metadata in `pyproject.toml`, reinstall:
 
@@ -176,15 +246,29 @@ To reuse this project for other CLI tools:
 - Rename the `myscript` module and CLI command
 - Update `pyproject.toml`, `main.py`, and documentation
 
+Thank you for following along!
+
+## Contributions
+  
+Contributions are welcome — fork the repo, create a branch, and open a pull request.
+
+Learn more at GitHub’s [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
 ## References
 
-- [Real Python: Packaging Your Python Code With pyproject.toml (YouTube)](https://www.youtube.com/watch?v=v6tALyc4C10)
-- [Real Python: Everyday Project Packaging course](https://realpython.com/courses/packaging-with-pyproject-toml/)
+- [Real Python: Packaging Your Python Code With pyproject.toml](https://www.youtube.com/watch?v=v6tALyc4C10) (YouTube)
+- [Real Python: Everyday Project Packaging](https://realpython.com/courses/packaging-with-pyproject-toml/) course
 - [Python Packaging Authority (PyPA)](https://packaging.python.org)
+- [Configuring setuptools using pyproject.toml files](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)
+- [Writing your pyproject.toml](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
+- [pip build-system reference](https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/)
+- [Semantic Versioning](https://semver.org)
 - [PEP 517 – Build system abstraction](https://peps.python.org/pep-0517/)
 - [PEP 518 – Build dependencies config](https://peps.python.org/pep-0518/)
 - [PEP 621 – Standard project metadata](https://peps.python.org/pep-0621/)
 - [PEP 660 – Editable installs](https://peps.python.org/pep-0660/)
-- [Setuptools + pyproject.toml](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)
-- [pip build-system reference](https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/)
-- [Semantic Versioning](https://semver.org)
+
+## License
+
+MIT [LICENSE](LICENSE.md)  
+More details: [Choose an open source license](https://choosealicense.com/licenses/mit/)
