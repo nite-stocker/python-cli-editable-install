@@ -18,33 +18,35 @@ Without it:
 - Structure may not support packaging or distribution
 - Tooling (e.g. Poetry, build, pip) may not detect your project
 
-## Step-by-step setup in VS Code
+## What is `pyproject.toml`?
 
-### 1. Create a new project folder
+`pyproject.toml` is the standard project configuration file used by pip, build, and modern Python tools. It replaces `setup.py`.
 
-1. Open VS Code
-2. Go to **File > Open Folder...**
-3. Create a folder named `snakesay`
-4. Select and open it
+- `[build-system]`: Tells pip/setuptools how to build the package.
+- `[project]`: Defines metadata, dependencies, and CLI script entry point.
+- `[project.scripts]`: Creates and maps a `snakesay` shell command to the `snakesay` package folder and the `__main__.py` module script's `main()` function.
 
-### 2. Add project files
+See the Reference section to learn more.
 
-From the **Explorer sidebar**:
+## 1. Project structure
 
-- macOS: ⌘+Shift+E
-- Windows/Linux: Ctrl+Shift+E
+Create the project folder structure and files:
 
-…create two files:
+```bash
+snakesay-project/
+├── pyproject.toml
+├── README.md
+└── src/
+    └── snakesay/
+        ├── __main__.py
+        └── snake.py
+```
 
-- `pyproject.toml`
-- `README.md`
+## 2. Configuration
 
-To create a new file:
+Insert the below TOML tables into `pyproject.toml`.
 
-- macOS: ⌘+N, then ⌘+S to save
-- Windows/Linux: Ctrl+N, then Ctrl+S to save
-
-Paste into `pyproject.toml` and save:
+The `[build-system]` table tells tools like `pip` how to build your project, using setuptools. The `[project]` table defines your package’s name, version, dependencies, and command-line entry point.
 
 ```toml
 [project]
@@ -56,44 +58,14 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-snakesay = "snakesay.__main__:main"
+ssnakessay = "snakesay.__main__:main"
 
 [build-system]
 requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 ```
 
-#### What is `pyproject.toml`?
-
-It is the standard project config file used by pip, build, and modern Python tools. It replaces `setup.py`.
-
-- `[build-system]`: Tells pip/setuptools how to build the package.
-- `[project]`: Defines metadata, dependencies, and CLI script entry point.
-- `[project.scripts]`: Creates and maps a `snakesay` shell command to the `snakesay` package folder and the `__main__.py` module script's `main()` function.
-
-### 3. Create source files
-
-From the Explorer:
-
-- Create a folder: `src/`
-- Inside `src/`, create another folder: `snakesay/`
-- Inside `src/snakesay/`, create:
-  - `__main__.py` (double underscore before and after "main")
-  - `snake.py`
-
-Final project structure:
-
-```
-snakesay/
-├── pyproject.toml
-├── README.md
-└── src/
-    └── snakesay/
-        ├── __main__.py
-        └── snake.py
-```
-
-### 4. Add script logic
+## 3. Script logic
 
 In `src/snakesay/__main__.py`, add:
 
@@ -102,14 +74,11 @@ import sys
 
 from snakesay import snake
 
-
 def main():
     snake.say(" ".join(sys.argv[1:]))
 
-
 if __name__ == "__main__":
     main()
-
 ```
 
 In `src/snakesay/snake.py`, add:
@@ -125,7 +94,6 @@ SNAKE = r"""  \
          (________)Oo°
 """
 
-
 def bubble(message: str) -> str:
     """Create a speech bubble for the given message."""
     bubble_length: int = len(message) + 2
@@ -134,44 +102,32 @@ def bubble(message: str) -> str:
 ( {message} )    
  {"‾" * bubble_length}"""
 
-
 def say(message: str) -> None:
     """Print a snake with a speech bubble containing the given message."""
     if not message:
         message = "I never thought I'd say this, but I have nothing to say."
     print(bubble(message))
     print(SNAKE)
-
 ```
 
-### 5. Create and activate a virtual environment
+## 4. Project isolation
 
-Open the terminal:
-
-- macOS: Ctrl+` or **Terminal > New Terminal**
-- Windows/Linux: Ctrl+` or **Terminal > New Terminal**
-
-Create the virtual environment:
+Create a virtual environment to keep your project isolated so installs don’t affect other projects or Python versions:
 
 ```bash
 python3 -m venv .venv
 ```
 
-Activate it:
+Activate the virutual environment:
 
-- macOS/Linux:
-  ```bash
-  source .venv/bin/activate
-  ```
-
-- Windows:
-  ```cmd
-  .venv\Scripts\activate
-  ```
+- macOS/Linux: `source .venv/bin/activate`
+- Windows: `.venv\Scripts\activate`
 
 You should now see `(.venv)` in your shell prompt.
 
-### 6. Install in editable mode
+## 5. Install the project in editable mode
+
+Editable mode installs the project so code changes take effect immediately—no need to reinstall after edits.
 
 With the virtual environment activated, run:
 
@@ -179,7 +135,11 @@ With the virtual environment activated, run:
 pip install -e .
 ```
 
-Run the script:
+The "." tells `pip install` to install configured packages (snakesay) in the current folder (snakesay-project).
+
+## 6. Run the script
+
+In your terminal, run:
 
 ```bash
 snakesay
@@ -187,7 +147,7 @@ snakesay
 
 You should see:
 
-```console
+```bash
  ________________________________________________________
 (I never thought I'd say this, but I have nothing to say.)
  --------------------------------------------------------
@@ -200,36 +160,30 @@ You should see:
          (________)Oo°
 ```
 
-Try a custom message after the script name:
+## 6. Reinstall the script after editting `pyproject.toml`
 
-```bash
-snakesay Time is an illusion. Lunchtime doubly so.
+If you revise dependencies, entry points, or metadata in `pyproject.toml`, the script must be reinstalled to apply the changes.
+
+Add a couple extra "S"s to the script name:
+
+```toml
+[project.scripts]
+ssnakessay = "snakesay.__main__:main"
 ```
 
-You should see:
-
-```console
- _________________________________________
-(Time is an illusion. Lunchtime doubly so.)
- -----------------------------------------
-   \    __
-    \  {oo}
-       (__)\
-         λ \\
-           _\\__
-          (_____)_
-         (________)Oo°
-```
-
-### 7. Reinstall the script if you edit `pyproject.toml`
-
-If you change dependencies, entry points, or metadata in `pyproject.toml`, reinstall:
+Re-install the script:
 
 ```bash
 pip install -e .
 ```
 
-### 8. Uninstall the CLI script (optional)
+Run the script with its new name:
+
+```bash
+ssnakessay
+```
+
+## 7. Uninstall the CLI script (optional)
 
 ```bash
 pip uninstall myscript
@@ -251,18 +205,32 @@ Contributions are welcome — fork the repo, create a branch, and open a pull re
 
 Learn more at GitHub’s [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
 
-## References
+## Reference
+
+### Course this guide is based on
 
 - [Real Python: Packaging Your Python Code With pyproject.toml](https://www.youtube.com/watch?v=v6tALyc4C10) (YouTube)
-- [Python Packaging Authority (PyPA)](https://packaging.python.org)
-- [Configuring setuptools using pyproject.toml files](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)
+
+### Packaging
+
+- [Python Packaging User Guide)](https://packaging.python.org/en/latest/)
 - [Writing your pyproject.toml](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
+
+### Build system
+
+- [Configuring setuptools using pyproject.toml files](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)    
 - [pip build-system reference](https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/)
-- [Semantic Versioning](https://semver.org)
+
+### Standards
+
 - [PEP 517 – Build system abstraction](https://peps.python.org/pep-0517/)
 - [PEP 518 – Build dependencies config](https://peps.python.org/pep-0518/)
 - [PEP 621 – Standard project metadata](https://peps.python.org/pep-0621/)
 - [PEP 660 – Editable installs](https://peps.python.org/pep-0660/)
+
+# Extra
+
+- [Semantic Versioning](https://semver.org)
 
 ## License
 
