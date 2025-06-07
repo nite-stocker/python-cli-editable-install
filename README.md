@@ -192,13 +192,16 @@ ssnakessay
 pip uninstall ssnakessay
 ```
 
-## Use as a template
+## 8. Use this project as a scoffold
 
-To reuse this project for other CLI scripts:
+To reuse this project for other CLI script projects:
 
-- Duplicate the folder
-- Rename the `snakesay` module and CLI script command
-- Update `pyproject.toml`, `__main__.py`, and documentation
+1. Deactivate the virtual environment (macOS/Linux/Windows): `deactivate`
+2. Delete the .venv virtual environment folder
+3. Duplicate the `snakesay-project` project folder and rename to `python-package-scaffold`
+4. Generalize the structure naming, configuration, and script code as much as you need for project quick starts
+
+## End
 
 Thank you for following along!
 
