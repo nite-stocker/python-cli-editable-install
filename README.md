@@ -8,12 +8,15 @@ Based on: [Packaging Your Python Code With pyproject.toml](https://www.youtube.c
 
 ## Why use this pattern?
 
-- Run your CLI script from anywhere using a single command (`snakesay`)—no need to navigate to the script directory or type `python` and the file path every time
+Pros:
+
+- Run your CLI script from anywhere using only the script name—no need to navigate to the script directory, enter the script path, or type `python` before the script name
 - Follow Python packaging standards (`pyproject.toml`, editable installs)
 - Avoid rebuilds after changes
 - Integrate easily with IDEs, CI, and deployment tools
 
-Without it:
+Cons:
+
 - You’ll need to run scripts manually (`python file.py`)
 - Structure may not support packaging or distribution
 - Tooling (e.g. Poetry, build, pip) may not detect your project
