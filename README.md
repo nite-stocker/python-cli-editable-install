@@ -2,13 +2,13 @@
 
 This guide walks through creating a minimal, standards-compliant Python command-line (CLI) script package with `pyproject.toml`. The project installs in editable mode, allowing the script to run globally during development without needing to rebuild.
 
-The project follows modern Python packaging practices (PEPs 517, 518, 621, 660) and serves as a reusable scaffold for future CLI tools.
+The project follows modern Python packaging practices (PEPs 517, 518, 621, 660) and serves as a reusable scaffold for future CLI scripts.
 
 Based on: [Packaging Your Python Code With pyproject.toml](https://www.youtube.com/watch?v=v6tALyc4C10) course by Real Python.
 
 ## Why use this pattern?
 
-- Run your CLI from anywhere using a single command (`snakesay`)—no need to navigate to the script directory or type `python` and the file path every time
+- Run your CLI script from anywhere using a single command (`snakesay`)—no need to navigate to the script directory or type `python` and the file path every time
 - Follow Python packaging standards (`pyproject.toml`, editable installs)
 - Avoid rebuilds after changes
 - Integrate easily with IDEs, CI, and deployment tools
@@ -50,7 +50,7 @@ Paste into `pyproject.toml` and save:
 [project]
 name = "snakesay"
 version = "1.0.0"
-description = "Command-line program that prints an ASCII art picture of a snake with a speech bubble containing a given message."
+description = "CLI script that prints an ASCII art picture of a snake with a speech bubble containing a given message."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
@@ -68,7 +68,7 @@ build-backend = "setuptools.build_meta"
 It is the standard project config file used by pip, build, and modern Python tools. It replaces `setup.py`.
 
 - `[build-system]`: Tells pip/setuptools how to build the package.
-- `[project]`: Defines metadata, dependencies, and the CLI entry point.
+- `[project]`: Defines metadata, dependencies, and CLI script entry point.
 - `[project.scripts]`: Creates and maps a `snakesay` shell command to the `snakesay` package folder and the `__main__.py` module script's `main()` function.
 
 ### 3. Create source files
@@ -229,7 +229,7 @@ If you change dependencies, entry points, or metadata in `pyproject.toml`, reins
 pip install -e .
 ```
 
-### 8. Uninstall the CLI (optional)
+### 8. Uninstall the CLI script (optional)
 
 ```bash
 pip uninstall myscript
@@ -237,10 +237,10 @@ pip uninstall myscript
 
 ## Use as a template
 
-To reuse this project for other CLI tools:
+To reuse this project for other CLI scripts:
 
 - Duplicate the folder
-- Rename the `snakesay` module and CLI command
+- Rename the `snakesay` module and CLI script command
 - Update `pyproject.toml`, `__main__.py`, and documentation
 
 Thank you for following along!
