@@ -6,7 +6,7 @@ The project follows modern Python packaging practices (PEPs 517, 518, 621, 660) 
 
 Based on: [Packaging Your Python Code With pyproject.toml](https://www.youtube.com/watch?v=v6tALyc4C10) course by Real Python.
 
-## Why use this pattern
+## Why use this pattern?
 
 - Run your CLI from anywhere using a single command (`snakesay`)—no need to navigate to the script directory or type `python` and the file path every time
 - Follow Python packaging standards (`pyproject.toml`, editable installs)
