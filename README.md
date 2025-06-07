@@ -205,40 +205,40 @@ To reuse this project for other CLI script projects:
 
 Thank you for following along!
 
-## Contributions
+# Contributions
   
 Contributions are welcome — fork the repo, create a branch, and open a pull request.
 
 Learn more at GitHub’s [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
 
-## Reference
+# References
 
-### Course this guide is based on
+## Course this guide is based on
 
 - [Real Python: Packaging Your Python Code With pyproject.toml](https://www.youtube.com/watch?v=v6tALyc4C10) (YouTube)
 
-### Packaging
+## Packaging
 
 - [Python Packaging User Guide)](https://packaging.python.org/en/latest/)
 - [Writing your pyproject.toml](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
 
-### Build system
+## Build system
 
 - [Configuring setuptools using pyproject.toml files](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)    
 - [pip build-system reference](https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/)
 
-### Standards
+## Standards
 
 - [PEP 517 – Build system abstraction](https://peps.python.org/pep-0517/)
 - [PEP 518 – Build dependencies config](https://peps.python.org/pep-0518/)
 - [PEP 621 – Standard project metadata](https://peps.python.org/pep-0621/)
 - [PEP 660 – Editable installs](https://peps.python.org/pep-0660/)
 
-# Extra
+## Extra
 
 - [Semantic Versioning](https://semver.org)
 
-## License
+# License
 
 MIT [LICENSE](LICENSE.md)  
 More details: [Choose an open source license](https://choosealicense.com/licenses/mit/)
