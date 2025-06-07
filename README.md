@@ -49,7 +49,7 @@ snakesay-project/
 
 Insert the below TOML tables into `pyproject.toml`.
 
-The `[build-system]` table tells tools like `pip` how to build your project, using setuptools. The `[project]` table defines your package’s name, version, dependencies, and command-line entry point.
+The `[build-system]` table tells tools like `pip` how to build your project, using the setuptools build system. The `[project]` table defines your package’s name, version, dependencies, and command-line entry point.
 
 ```toml
 [project]
