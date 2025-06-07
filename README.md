@@ -121,7 +121,7 @@ Create a virtual environment to keep your project isolated so installs don’t a
 python3 -m venv .venv
 ```
 
-Activate the virutual environment:
+Activate the virtual environment:
 
 - macOS/Linux: `source .venv/bin/activate`
 - Windows: `.venv\Scripts\activate`
@@ -130,7 +130,7 @@ You should now see `(.venv)` in your shell prompt.
 
 ## 5. Install the project in editable mode
 
-Editable mode installs the project so code changes take effect immediately—no need to reinstall after edits.
+Editable mode installs the project so code changes take effect immediately during development—no need to reinstall after edits.
 
 With the virtual environment activated, run:
 
@@ -163,11 +163,11 @@ You should see:
          (________)Oo°
 ```
 
-## 6. Reinstall the script after editting `pyproject.toml`
+## 6. Reinstall the script after editing `pyproject.toml`
 
 If you revise dependencies, entry points, or metadata in `pyproject.toml`, the script must be reinstalled to apply the changes.
 
-In `pyproject.toml` under the `[project.scripts] table header, add a couple extra "S"s to the script name:
+In `pyproject.toml` under the `[project.scripts]` table header, add a couple extra "S"s to the script name:
 
 ```toml
 [project.scripts]
