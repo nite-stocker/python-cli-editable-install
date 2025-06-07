@@ -29,9 +29,11 @@ Cons:
 - `[project]`: Defines metadata, dependencies, and CLI script entry point.
 - `[project.scripts]`: Creates and maps a `snakesay` shell command to the `snakesay` package folder and the `__main__.py` module script's `main()` function.
 
-See the Reference section to learn more.
+See the References section to learn more.
 
-## 1. Project structure
+## Guide
+
+### 1. Project structure
 
 Create the project folder structure and files:
 
@@ -45,18 +47,17 @@ snakesay-project/
         └── snake.py
 ```
 
-## 2. Configuration
+### 2. Configuration
 
 Insert the below TOML tables into `pyproject.toml`.
 
-The `[build-system]` table tells tools like `pip` how to build your project, using the setuptools build system. The `[project]` table defines your package’s name, version, dependencies, and command-line entry point.
+The `[build-system]` table tells tools like `pip` how to build your project, using the setuptools build system. The `[project]` table defines your package’s name, version, dependencies, minimum Python version, and command-line entry point.
 
 ```toml
 [project]
 name = "snakesay"
 version = "1.0.0"
 description = "CLI script that prints an ASCII art picture of a snake with a speech bubble containing a given message."
-readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
 
@@ -68,7 +69,7 @@ requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 ```
 
-## 3. Script logic
+### 3. Script logic
 
 In `src/snakesay/__main__.py`, add:
 
@@ -113,7 +114,7 @@ def say(message: str) -> None:
     print(SNAKE)
 ```
 
-## 4. Project isolation
+### 4. Project isolation
 
 Create a virtual environment to keep your project isolated so installs don’t affect other projects or Python versions:
 
@@ -128,7 +129,7 @@ Activate the virtual environment:
 
 You should now see `(.venv)` in your shell prompt.
 
-## 5. Install the project in editable mode
+### 5. Install the project in editable mode
 
 Editable mode installs the project so code changes take effect immediately during development—no need to reinstall after edits.
 
@@ -140,7 +141,7 @@ pip install -e .
 
 The "." tells `pip install` to install configured packages (snakesay) in the current folder (snakesay-project).
 
-## 6. Run the script
+### 6. Run the script
 
 In your terminal, run:
 
@@ -163,7 +164,7 @@ You should see:
          (________)Oo°
 ```
 
-## 6. Reinstall the script after editing `pyproject.toml`
+### 6. Reinstall the script after editing `pyproject.toml`
 
 If you revise dependencies, entry points, or metadata in `pyproject.toml`, the script must be reinstalled to apply the changes.
 
@@ -186,13 +187,13 @@ Run the script with its new name:
 ssnakessay
 ```
 
-## 7. Uninstall the CLI script (optional)
+### 7. Uninstall the CLI script (optional)
 
 ```bash
 pip uninstall ssnakessay
 ```
 
-## 8. Use this project as a scoffold
+### 8. Use this project as a scoffold
 
 To reuse this project for other CLI script projects:
 
@@ -201,44 +202,42 @@ To reuse this project for other CLI script projects:
 3. Duplicate the `snakesay-project` project folder and rename to `python-package-scaffold`
 4. Generalize the structure naming, configuration, and script code as much as you need for project quick starts
 
-## End
+### Thank you for following along!
 
-Thank you for following along!
-
-# Contributions
+## Contributions
   
 Contributions are welcome — fork the repo, create a branch, and open a pull request.
 
 Learn more at GitHub’s [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
 
-# References
+## References
 
-## Course this guide is based on
+### Course this guide is based on
 
 - [Real Python: Packaging Your Python Code With pyproject.toml](https://www.youtube.com/watch?v=v6tALyc4C10) (YouTube)
 
-## Packaging
+### Packaging
 
 - [Python Packaging User Guide)](https://packaging.python.org/en/latest/)
 - [Writing your pyproject.toml](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
 
-## Build system
+### Build system
 
 - [Configuring setuptools using pyproject.toml files](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)    
 - [pip build-system reference](https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/)
 
-## Standards
+### Standards
 
 - [PEP 517 – Build system abstraction](https://peps.python.org/pep-0517/)
 - [PEP 518 – Build dependencies config](https://peps.python.org/pep-0518/)
 - [PEP 621 – Standard project metadata](https://peps.python.org/pep-0621/)
 - [PEP 660 – Editable installs](https://peps.python.org/pep-0660/)
 
-## Extra
+### Extra
 
 - [Semantic Versioning](https://semver.org)
 
-# License
+## License
 
 MIT [LICENSE](LICENSE.md)  
 More details: [Choose an open source license](https://choosealicense.com/licenses/mit/)
