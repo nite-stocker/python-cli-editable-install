@@ -167,7 +167,7 @@ You should see:
 
 If you revise dependencies, entry points, or metadata in `pyproject.toml`, the script must be reinstalled to apply the changes.
 
-Add a couple extra "S"s to the script name:
+In `pyproject.toml` under the `[project.scripts] table header, add a couple extra "S"s to the script name:
 
 ```toml
 [project.scripts]
@@ -189,7 +189,7 @@ ssnakessay
 ## 7. Uninstall the CLI script (optional)
 
 ```bash
-pip uninstall myscript
+pip uninstall ssnakessay
 ```
 
 ## Use as a template
