@@ -33,14 +33,18 @@ See the References section to learn more.
 
 ## Quick start
 
+Follow these steps to quickly set up and try out the example CLI project. You’ll clone the repository, create a virtual environment, install the package in editable mode, and run the CLI script from anywhere in your terminal.
+
 ```bash
-git clone https://github.com/yourname/python-cli-editable-install.git
-cd python-cli-editable-install
+git clone https://github.com/nite-stocker/python-cli-package-pyproject
+cd python-cli-package-pyproject
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
 snakesay Hello, World!
 ```
+
+Carry on to the Guide for a walkthrough of the full project setup and packaging process.
 
 ## Guide
 
