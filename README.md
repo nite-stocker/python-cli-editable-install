@@ -199,7 +199,7 @@ To reuse this project for other CLI script projects:
 
 1. Deactivate the virtual environment (macOS/Linux/Windows): `deactivate`
 2. Delete the .venv virtual environment folder
-3. Duplicate the `snakesay-project` project folder and rename to `python-package-scaffold`
+3. Duplicate the `snakesay-project` folder and rename to `python-package-scaffold`
 4. Generalize the structure naming, configuration, and script code as much as you need for project quick starts
 
 ### Thank you for following along!
