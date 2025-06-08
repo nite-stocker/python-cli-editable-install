@@ -1,0 +1,13 @@
+[project]
+name = "snakesay"
+version = "1.0.0"
+description = "CLI script that prints an ASCII art picture of a snake with a speech bubble containing a given message."
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+ssnakessay = "snakesay.__main__:main"
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
