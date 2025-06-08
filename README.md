@@ -10,10 +10,10 @@ Based on: [Packaging Your Python Code With pyproject.toml](https://www.youtube.c
 
 Pros:
 
-- Run your CLI script from anywhere using only the script name—no need to navigate to the script directory, enter the script path, or type `python` before the script name
-- Follow Python packaging standards (`pyproject.toml`, editable installs)
-- Avoid rebuilds after changes
-- Integrate easily with IDEs, CI, and deployment tools
+- Run your CLI script from anywhere using only the script name (No script directory navigation, No script path to enter, No `python` before the script name)
+- Follow Python packaging standards (`pyproject.toml` configuration)
+- Avoid reinstall after code changes (editable installs)
+- Integrate easily with IDEs and deployment tools
 
 Cons:
 
