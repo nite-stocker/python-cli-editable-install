@@ -139,7 +139,7 @@ With the virtual environment activated, run:
 pip install -e .
 ```
 
-The "." tells `pip install` to install configured packages (snakesay) in the current folder (snakesay-project).
+The "." tells `pip` to install the package defined in the current folder.
 
 ### 6. Run the script
 
