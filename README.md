@@ -164,7 +164,7 @@ You should see:
          (________)Oo°
 ```
 
-### 6. Reinstall the script after editing `pyproject.toml`
+### 7. Reinstall the script after editing `pyproject.toml`
 
 If you revise dependencies, entry points, or metadata in `pyproject.toml`, the script must be reinstalled to apply the changes.
 
@@ -187,13 +187,13 @@ Run the script with its new name:
 ssnakessay
 ```
 
-### 7. Uninstall the CLI script (optional)
+### 8. Uninstall the CLI script (optional)
 
 ```bash
 pip uninstall ssnakessay
 ```
 
-### 8. Use this project as a scoffold
+### 9. Use this project as a scaffold
 
 To reuse this project for other CLI script projects:
 
