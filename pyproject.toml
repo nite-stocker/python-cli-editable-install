@@ -6,7 +6,7 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-ssnakessay = "snakesay.__main__:main"
+snakesay = "snakesay.__main__:main"
 
 [build-system]
 requires = ["setuptools >= 77.0.3"]
