@@ -31,6 +31,17 @@ Cons:
 
 See the References section to learn more.
 
+## Quick start
+
+```bash
+git clone https://github.com/yourname/python-cli-editable-install.git
+cd python-cli-editable-install
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+snakesay Hello, World!
+```
+
 ## Guide
 
 ### 1. Project structure
@@ -166,7 +177,7 @@ You should see:
 
 ### 7. Reinstall the script after editing `pyproject.toml`
 
-If you revise dependencies, entry points, or metadata in `pyproject.toml`, the script must be reinstalled to apply the changes.
+If you revise dependencies, entry points, or metadata in `pyproject.toml`, the script must be reinstalled to apply the changes. Let's demonstrate this by renaming the entry-point script name.
 
 In `pyproject.toml` under the `[project.scripts]` table header, add a couple extra "S"s to the script name:
 
